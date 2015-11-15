@@ -1,0 +1,24 @@
+%% Author    : Robert Åberg, Sara Ervik
+%% Uppgift   : L2, Konspirationsdetektion.
+%% Kurs      : DD1361
+
+
+
+%% person(spider).
+%% person(conspirator1).
+%% person(conspirator2).
+%% person(other1).
+%% person(other2).
+%% knows(spider,conspirator1).
+%% knows(spider,conspirator2).
+%% knows(conspirator1,other1).
+%% knows(conspirator2,other2).
+
+
+
+%% doesNotKnow([Fst, Snd  | Tail]) :-
+%%     \+ knows(Fst, Snd),
+%%     doesNotKnow([Fst | Tail]).
+    
+
+like(john).
