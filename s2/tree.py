@@ -9,11 +9,13 @@ det som kommer efter nuvarande tecken för att veta vart man ska skickas.
 """
 
 import sys
-#sys.setrecursionlimit(10000)
+sys.setrecursionlimit(20000)
 
 from lexer import *
 from parser import *
 from syntaxfel import Syntaxerror
+
+
 
 
 class Tree:
@@ -35,40 +37,53 @@ def readProgram(lexer):
         return t
 
 def readInstruction(lexer):
-#    print(lexer.peek().type)
-    if lexer.hasMoreTokens() and \
-       lexer.peek().type == 'down' or\
-       lexer.peek().type == 'up':
-        branch = readPencil(lexer)
-        return branch
-    elif lexer.hasMoreTokens() and \
-         lexer.peek().type == 'forw' or  \
-         lexer.peek().type == 'back' or  \
-         lexer.peek().type == 'right' or \
-         lexer.peek().type == 'left':
-        branch = readMoves(lexer)
-        return branch
-    elif lexer.hasMoreTokens() and \
-         lexer.peek().type == 'color':
-        branch = readColor(lexer)
-        return branch
-    elif lexer.hasMoreTokens() and \
-         lexer.peek().type == 'rep':
-        branch = readRep(lexer)
-        return branch
-    else:
-        raise Syntaxerror("Syntaxfel")
+    if lexer.hasMoreTokens():
+        if lexer.hasMoreTokens() and \
+           lexer.peek().type == 'down' or\
+           lexer.peek().type == 'up':
+            branch = readPencil(lexer)
+            return branch
+        elif lexer.hasMoreTokens() and \
+             lexer.peek().type == 'forw' or  \
+             lexer.peek().type == 'back' or  \
+             lexer.peek().type == 'right' or \
+             lexer.peek().type == 'left':
+            branch = readMoves(lexer)
+            return branch
+        elif lexer.hasMoreTokens() and \
+             lexer.peek().type == 'color':
+            branch = readColor(lexer)
+            return branch
+        elif lexer.hasMoreTokens() and \
+             lexer.peek().type == 'rep':
+            branch = readRep(lexer)
+            return branch
+        else:
+            raise Syntaxerror("Syntaxfel")
+    return
                 
+
+def extractRepNumber(rep):
+    number = ""
+    for character in rep:
+        if character.isdigit():
+            number += character
+    return int(number)
+            
 
 def readRep(lexer):
     t = Tree(lexer.peek())
+    t.num = (extractRepNumber(lexer.peek().value))
+    lexer.row = lexer.peek().row
     lexer.dequeue()
     if lexer.hasMoreTokens() and \
        lexer.peek().type == 'quote':
+        lexer.row = lexer.peek().row
         lexer.dequeue()
         t.down = readProgram(lexer)
         if lexer.hasMoreTokens() and \
            lexer.peek().type == 'quote':
+            lexer.row = lexer.peek().row
             lexer.dequeue()
             return t
         raise Syntaxerror("Syntaxfel")
@@ -82,58 +97,48 @@ def readRep(lexer):
 
 def readPencil(lexer):
     t = Tree(lexer.peek())
+    lexer.testRow = lexer.peek().row
+    lexer.row = lexer.peek().row
     lexer.dequeue()
     if lexer.hasMoreTokens() and \
        lexer.peek().type == 'dot':
+        lexer.row = lexer.peek().row
         lexer.dequeue()
         return t
     raise Syntaxerror("Syntaxfel")
     
 def readMoves(lexer):
     t = Tree(lexer.peek())
+    lexer.row = lexer.peek().row
     lexer.dequeue()
     if lexer.hasMoreTokens() and \
        lexer.peek().type == 'number':
         t.num = lexer.peek().value
+        lexer.row = lexer.peek().row
         lexer.dequeue()
         if lexer.hasMoreTokens() and \
            lexer.peek().type == 'dot':
+            lexer.row = lexer.peek().row
             lexer.dequeue()
             return t
     raise Syntaxerror("Syntaxfel")
 
 def readColor(lexer):
     t = Tree(lexer.peek())
+    lexer.row = lexer.peek().row
     lexer.dequeue()
     if lexer.hasMoreTokens() and \
        lexer.peek().type == 'colorcode':
         t.num = lexer.peek().value
+        lexer.row = lexer.peek().row
         lexer.dequeue()
         if lexer.hasMoreTokens() and \
            lexer.peek().type == 'dot':
+            lexer.row = lexer.peek().row
             lexer.dequeue()
             return t
     raise Syntaxerror("Syntaxfel")
         
-def main():
-    file = stdin.readlines()
-    try:
-        lexer = Lexer(file)
-        tree = readProgram(lexer)
-        result = parse(tree)
-        if lexer.hasMoreTokens() and \
-           lexer.peek().type == "quote":
-            tree = readProgram(lexer)
-        return "korrekt"
-    except Syntaxerror as fel:
-        if not lexer.hasMoreTokens():
-            return str(fel) + " på rad " + str(lexer.row)
-        else:
-            return str(fel) + " på rad " + str(lexer.peek().row)
-
-
-print(main())
-
 
     
 

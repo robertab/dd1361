@@ -6,40 +6,69 @@ Assignmet:      S2, Sköldpaddegrafik
 from constants import *
 from math import *
 
-output = ['#0000FF', 0.0000, 0.0000, 0.0000, 0.0000]
 
-def printOutput(DOWN):
+def printOutput():
+    global DOWN
     if DOWN:
-        for i in range(len(output)):
-            print(output[i], end="\t")
+        print(output[0], end='\t')
+        for i in range(1,5):
+            print('%.4f' % float(output[i]), end="\t")
         print()
+    else: return
+        
 
 def calculateAngle(tree):
-    return (pi * tree.num) / 180
-    
-    
-    
+    angle = (pi * tree.num) / 180
+    return angle
 
-# Testar utan reps
-def parse(tree, DOWN=False, ANGLE=0):
+def innerParse(tree):
+    global DOWN
+    global ANGLE
     output[1] = output[3]
     output[2] = output[4]
     if tree == None: return 0
     else:
-        if tree.token.type == 'down':   DOWN = True
-        elif tree.token.type == 'up':   DOWN = False
-        elif tree.token.type == 'color': output[0] = tree.num
-        elif tree.token.type == 'left': ANGLE += calculateAngle(tree)
+        if tree.token.type == 'down'    :   DOWN = True
+        elif tree.token.type == 'up'    :   DOWN = False
+        elif tree.token.type == 'color' :   output[0] = tree.num
+        elif tree.token.type == 'left'  :   ANGLE += calculateAngle(tree)
+        elif tree.token.type == 'right' :   ANGLE -= calculateAngle(tree)
+        elif tree.token.type == 'forw'  :
+            output[3] += tree.num * cos(ANGLE)
+            output[4] += tree.num * sin(ANGLE)
+            printOutput()
+        elif tree.token.type == 'back':
+            output[3] -= tree.num * cos(ANGLE)
+            output[4] -= tree.num * sin(ANGLE)
+            printOutput()
+        elif tree.token.type == 'rep': return parse(tree)
+    innerParse(tree.next)
+
+    
+def parse(tree):
+    global DOWN
+    global ANGLE
+    output[1] = output[3]
+    output[2] = output[4]
+    if tree == None: return 0
+    else:
+        if tree.token.type == 'down'    :   DOWN = True
+        elif tree.token.type == 'up'    :   DOWN = False
+        elif tree.token.type == 'color' :   output[0] = tree.num
+        elif tree.token.type == 'left'  :   ANGLE += calculateAngle(tree)
+        elif tree.token.type == 'right' :   ANGLE -= calculateAngle(tree)
         elif tree.token.type == 'forw':
             output[3] += tree.num * cos(ANGLE)
             output[4] += tree.num * sin(ANGLE)
-            printOutput(DOWN)
+            printOutput()
         elif tree.token.type == 'back':
-            output[3] -= tree.num * cos(angle)
-            output[4] -= tree.num * sin(angle)
-            printOutput(DOWN)
-    print(ANGLE)
-    # Eventuellt avrundar vi angle till int, alltså 0. testfall fungerar inte.
-
-    return parse(tree.next, DOWN)
+            output[3] -= tree.num * cos(ANGLE)
+            output[4] -= tree.num * sin(ANGLE)
+            printOutput()
+        elif tree.token.type == 'rep':
+            for i in range(tree.num):
+                innerParse(tree.down)
+    parse(tree.next)
     
+if __name__ == '__main__':
+    main()
