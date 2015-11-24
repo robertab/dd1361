@@ -1,8 +1,15 @@
+# encoding: UTF-8
+
+"""
+Author:         Robert Åberg, Sara Ervik
+Assignment:     S2, Sköldpaddegrafik
+File:           constants.py
+"""
 
 
-"""Konstanter"""
 
-pattern = '\s+|\.|\d+|\"|#[A-Fa-f0-9]{6}|forw\s|color\s|left\s|back\s|right\s|down|up|rep\s[1-9]\d*\s|%.+\n|.'
+
+pattern = '\s+|\.|\d+|\"|#[A-Fa-f0-9]{6}|forw\s|color\s|left\s|back\s|right\s|down|up|rep\s+[1-9]\d*\s+|%.*\n|.'
 
 commentPattern = '%.*\n?'
 ANGLE = 0

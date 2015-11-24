@@ -1,6 +1,9 @@
+# encoding: UTF-8
+
 """
 Author:         Robert Åberg, Sara Ervik
 Assignment:     S2, Sköldpaddegrafik
+File:           tree.py
 
 Den här filen skapar syntaxträdet med hjälp av de tokens
 som Lexer() skapade. Allt sköts med rekursiv medåkning och
@@ -9,7 +12,7 @@ det som kommer efter nuvarande tecken för att veta vart man ska skickas.
 """
 
 import sys
-sys.setrecursionlimit(20000)
+
 
 from lexer import *
 from parser import *

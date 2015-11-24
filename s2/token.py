@@ -1,4 +1,10 @@
-"""Klass token"""
+#encoding: UTF-8
+"""
+Author:         Robert Åberg, Sara Ervik
+Assignment:     S2, Sköldpaddegrafik
+File:           token.py
+"""
+
 class Token:
     def __init__(self, type, row, value=None):
         "En Token klass för att alla tokens"

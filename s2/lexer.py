@@ -1,6 +1,9 @@
+#encoding: UTF-8
+
 """
 Author:         Robert Åberg, Sara Ervik
 Assignment:     S2, Sköldpaddegrafik
+File:           lexer.py
 
 Här delas indata in i tokens med hjälp av regex som jämför enligt angivna regler.
 Tveksam dubbel for-loop som genom söker input till EOF. 
@@ -45,7 +48,6 @@ class Lexer:
             elif token[0]   == '#'     : self.tokens.append(Token(COLORCODE, self.row, token))
             elif token[0]   == '\n'    : pass 
             elif token.isspace()       : pass 
-            
             elif token.isdigit() and token[0] != '0':
                 self.tokens.append(Token(NUMBER, self.row, int(token)))
             else:

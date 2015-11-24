@@ -1,20 +1,26 @@
+#encoding: UTF-8
+
 """
 Author:         Robert Åberg, Sara Ervik
-Assignmet:      S2, Sköldpaddegrafik
-
+Assignment:     S2, Sköldpaddegrafik
+File:           parser.py
 """
+
+
+
 from constants import *
 from math import *
+import sys
 
+DOWN = False
 
 def printOutput():
     global DOWN
     if DOWN:
         print(output[0], end='\t')
         for i in range(1,5):
-            print('%.4f' % float(output[i]), end="\t")
+            print('%.4f' % float(output[i]), end="\t") 
         print()
-    else: return
         
 
 def calculateAngle(tree):
@@ -44,7 +50,6 @@ def innerParse(tree):
         elif tree.token.type == 'rep': return parse(tree)
     innerParse(tree.next)
 
-    
 def parse(tree):
     global DOWN
     global ANGLE
@@ -57,7 +62,7 @@ def parse(tree):
         elif tree.token.type == 'color' :   output[0] = tree.num
         elif tree.token.type == 'left'  :   ANGLE += calculateAngle(tree)
         elif tree.token.type == 'right' :   ANGLE -= calculateAngle(tree)
-        elif tree.token.type == 'forw':
+        elif tree.token.type == 'forw'  :
             output[3] += tree.num * cos(ANGLE)
             output[4] += tree.num * sin(ANGLE)
             printOutput()
