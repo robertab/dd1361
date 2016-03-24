@@ -19,8 +19,6 @@ from parser import *
 from syntaxfel import Syntaxerror
 
 
-
-
 class Tree:
     def __init__(self, token=None, num=1):
         self.next = None
@@ -28,6 +26,7 @@ class Tree:
         self.token = token
         self.num = num
     
+
 def readProgram(lexer):
     t = readInstruction(lexer)
     if not lexer.hasMoreTokens():
@@ -38,6 +37,7 @@ def readProgram(lexer):
     else:
         t.next = readProgram(lexer)
         return t
+
 
 def readInstruction(lexer):
     if lexer.hasMoreTokens():
@@ -109,6 +109,7 @@ def readPencil(lexer):
         lexer.dequeue()
         return t
     raise Syntaxerror("Syntaxfel")
+
     
 def readMoves(lexer):
     t = Tree(lexer.peek())
@@ -126,6 +127,7 @@ def readMoves(lexer):
             return t
     raise Syntaxerror("Syntaxfel")
 
+
 def readColor(lexer):
     t = Tree(lexer.peek())
     lexer.row = lexer.peek().row
@@ -141,7 +143,3 @@ def readColor(lexer):
             lexer.dequeue()
             return t
     raise Syntaxerror("Syntaxfel")
-        
-
-    
-

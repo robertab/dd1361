@@ -35,7 +35,7 @@ class Lexer:
         listOfMatches = re.findall(pattern, replacedString)
         for token in listOfMatches:
             if '\n' in token           : self.row += token.count('\n')
-            if token[0:5] == 'color'   : self.tokens.append(Token(COLOR, self.row)) 
+            elif token[0:5] == 'color'   : self.tokens.append(Token(COLOR, self.row)) 
             elif token[0:4] == 'forw'  : self.tokens.append(Token(FORW, self.row))
             elif token      == '.'     : self.tokens.append(Token(DOT, self.row))
             elif token[0:4] == 'back'  : self.tokens.append(Token(BACK, self.row))

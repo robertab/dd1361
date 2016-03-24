@@ -1,7 +1,0 @@
-% Author    : Robert Åberg, Sara Ervik
-% Uppgift   : L2, Konspirationsdetektion.
-% Kurs      : DD1361
-
-
-
-doesNotKnow([Head | Tail])

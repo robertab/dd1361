@@ -22,7 +22,7 @@ conspirator([Head | PossibleConsp], Consp, Final) :-
     conspirator(PossibleConsp, [Head | Consp], Final).
 
 
-conspirator([_ | PossibleConsp], Consp, Final) :-           % Känner de varandra loopar vi vidare.
+conspirator([_ | PossibleConsp], Consp, Final) :-
     conspirator(PossibleConsp, Consp, Final). 
 
 

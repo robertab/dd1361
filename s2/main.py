@@ -14,7 +14,6 @@ som sköter utdata.
 All raise-hantering sköts härifrån och printar ut det korrekta
 syntaxfelet. 
 
-
 """
 
 from syntaxfel import Syntaxerror

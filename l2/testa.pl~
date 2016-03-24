@@ -1,3 +1,0 @@
-bar([], Y, Y).
-bar([H|T], Y, [H|Z]):- bar(T, Y, Z).
-
