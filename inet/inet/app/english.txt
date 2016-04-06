@@ -1,0 +1,23 @@
+What would you like to do?
+(1) Current balance.
+(2) Withdraw.
+(3) Deposit.
+(4) Exit.
+
+
+Please enter your cardnumber:
+
+Please enter your pin code:
+
+No such user
+
+Current Balance is: 
+
+Please enter your two digit code
+
+-------WRONG CODE-------
+Returning to main menu.
+
+How much?
+
+Goodbye. Please visit us again

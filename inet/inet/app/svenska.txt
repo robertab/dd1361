@@ -1,0 +1,24 @@
+Vad vill du göra?
+(1) Saldo.
+(2) Ta ut.
+(3) Sätta in.
+(4) Avsluta.
+
+
+Vänligen skriv in ditt kortnummer:
+
+Vänligen skriv in pinkoden:
+
+Finns ingen sådan användare
+
+Saldo: 
+
+Vänligen mata in din tvåsiffriga kod
+
+----------FEL KOD---------
+Återvänder till huvudmenyn
+
+Hur mycket?
+
+På återseende. Kom gärna tillbaka
+
