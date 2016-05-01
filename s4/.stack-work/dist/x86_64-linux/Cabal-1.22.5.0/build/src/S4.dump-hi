@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-05-01 15:12:03.225806 UTC
+2016-05-01 17:10:05.899276 UTC
 
 interface s4_EFgflZrg4kFIOeFDBXukdQ:S4 7103
-  interface hash: 8dc506798ea75b72bf5cb6fdb6af81b3
-  ABI hash: 7c10e9565615f10a3524c6d57c1fb31f
+  interface hash: 4ebf30a68c9d10ebfb0299d2ba12838e
+  ABI hash: d7c742ee61ef95b2004589ff2bf6445f
   export-list hash: dd77533934b4d778d5af7fdba8344e84
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 962af636f8e927040c7daa9c21457292
@@ -61,7 +61,7 @@ import  -/  parsec-3.1.9@parse_7aUabKPjr5W6Al5Ge35AQl:Text.Parsec.Combinator 8d4
 import  -/  parsec-3.1.9@parse_7aUabKPjr5W6Al5Ge35AQl:Text.Parsec.Error f845543d816de25a8de00e4137afe6b2
 import  -/  parsec-3.1.9@parse_7aUabKPjr5W6Al5Ge35AQl:Text.Parsec.Prim 1f699e694859aece3e0612a4d0e0177b
 import  -/  parsec-3.1.9@parse_7aUabKPjr5W6Al5Ge35AQl:Text.Parsec.String 194037aaf0f54cd34cf205eead33954d
-a91e5ede4010948ecbf7f037578cd9f7
+0ffc915631b1c698037ff484e22ec44e
   $fShowInstruction :: GHC.Show.Show S4.Instruction
   DFunId[0]
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -70,18 +70,15 @@ a91e5ede4010948ecbf7f037578cd9f7
                   S4.$fShowInstruction_$cshowsPrec
                   S4.$fShowInstruction_$cshow
                   S4.$fShowInstruction_$cshowList -}
-a91e5ede4010948ecbf7f037578cd9f7
+0ffc915631b1c698037ff484e22ec44e
   $fShowInstruction1 :: S4.Instruction -> GHC.Show.ShowS
   {- Arity: 2,
-     Unfolding: (\ w :: S4.Instruction w1 :: GHC.Base.String ->
-                 S4.$w$cshowsPrec 0 w w1) -}
-b80c2a8c5382f8aeec883d3b1c4399c9
-  $fShowInstruction2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Back "#) -}
-b8b856226063371fa99afc5e6ed31094
-  $fShowInstruction3 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Forw "#) -}
-a91e5ede4010948ecbf7f037578cd9f7
+     Unfolding: (S4.$fShowInstruction_$cshowsPrec
+                   S4.$fShowInstruction2) -}
+22be08874eaa42f5a8588d6a0096f106
+  $fShowInstruction2 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0) -}
+0ffc915631b1c698037ff484e22ec44e
   $fShowInstruction_$cshow :: S4.Instruction -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: InlineRule (1, True, False)
@@ -90,82 +87,26 @@ a91e5ede4010948ecbf7f037578cd9f7
                    GHC.Show.shows18
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-a91e5ede4010948ecbf7f037578cd9f7
+0ffc915631b1c698037ff484e22ec44e
   $fShowInstruction_$cshowList :: [S4.Instruction] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__
                    @ S4.Instruction
                    S4.$fShowInstruction1) -}
-a91e5ede4010948ecbf7f037578cd9f7
+0ffc915631b1c698037ff484e22ec44e
   $fShowInstruction_$cshowsPrec ::
     GHC.Types.Int -> S4.Instruction -> GHC.Show.ShowS
-  {- Arity: 3, Strictness: <S,1*U(U)><S,1*U><L,U>, Inline: INLINE[0],
-     Unfolding: InlineRule (3, True, False)
-                (\ w :: GHC.Types.Int w1 :: S4.Instruction w2 :: GHC.Base.String ->
-                 case w of ww { GHC.Types.I# ww1 -> S4.$w$cshowsPrec ww1 w1 w2 }) -}
-a91e5ede4010948ecbf7f037578cd9f7
-  $w$cshowsPrec ::
-    GHC.Prim.Int#
-    -> S4.Instruction -> GHC.Base.String -> GHC.Base.String
-  {- Arity: 3, Strictness: <L,U><S,1*U><L,U>, Inline: [0],
-     Unfolding: (\ ww :: GHC.Prim.Int#
-                   w :: S4.Instruction
-                   w1 :: GHC.Base.String ->
-                 case w of wild {
-                   S4.Forw b1
-                   -> case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# ww 11) of wild1 {
-                        GHC.Types.False
-                        -> GHC.Base.++
-                             @ GHC.Types.Char
-                             S4.$fShowInstruction3
-                             (case GHC.Show.$w$cshowsPrec1 11 b1 w1 of ww2 { (#,#) ww3 ww4 ->
-                              GHC.Types.: @ GHC.Types.Char ww3 ww4 })
-                        GHC.Types.True
-                        -> GHC.Types.:
-                             @ GHC.Types.Char
-                             GHC.Show.shows9
-                             (GHC.Base.++
-                                @ GHC.Types.Char
-                                S4.$fShowInstruction3
-                                (case GHC.Show.$w$cshowsPrec1
-                                        11
-                                        b1
-                                        (GHC.Types.:
-                                           @ GHC.Types.Char
-                                           GHC.Show.shows8
-                                           w1) of ww2 { (#,#) ww3 ww4 ->
-                                 GHC.Types.: @ GHC.Types.Char ww3 ww4 })) }
-                   S4.Back b1
-                   -> case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# ww 11) of wild1 {
-                        GHC.Types.False
-                        -> GHC.Base.++
-                             @ GHC.Types.Char
-                             S4.$fShowInstruction2
-                             (case GHC.Show.$w$cshowsPrec1 11 b1 w1 of ww2 { (#,#) ww3 ww4 ->
-                              GHC.Types.: @ GHC.Types.Char ww3 ww4 })
-                        GHC.Types.True
-                        -> GHC.Types.:
-                             @ GHC.Types.Char
-                             GHC.Show.shows9
-                             (GHC.Base.++
-                                @ GHC.Types.Char
-                                S4.$fShowInstruction2
-                                (case GHC.Show.$w$cshowsPrec1
-                                        11
-                                        b1
-                                        (GHC.Types.:
-                                           @ GHC.Types.Char
-                                           GHC.Show.shows8
-                                           w1) of ww2 { (#,#) ww3 ww4 ->
-                                 GHC.Types.: @ GHC.Types.Char ww3 ww4 })) } }) -}
-a91e5ede4010948ecbf7f037578cd9f7
+  {- Arity: 3, Strictness: <L,1*U(U)><S,1*U><L,U> -}
+0ffc915631b1c698037ff484e22ec44e
   data Instruction
-    = Forw GHC.Integer.Type.Integer | Back GHC.Integer.Type.Integer
-05fccc23eca0cda80c2755fab51d1423
+    = Forw GHC.Integer.Type.Integer
+    | Back GHC.Integer.Type.Integer
+    | LeftI GHC.Integer.Type.Integer
+    | RightI GHC.Integer.Type.Integer
+    | Color GHC.Integer.Type.Integer
+    | Down
+    | Up
+7592289ad0785f0aeeef5210a8a5868e
   forw :: Text.Parsec.String.Parser S4.Instruction
   {- Arity: 5,
      Strictness: <L,U(U,U(U,U,U),U)><L,C(C1(C1(U)))><L,U><L,C(C1(C1(U)))><L,C(U)>,
@@ -177,7 +118,7 @@ a91e5ede4010948ecbf7f037578cd9f7
                           <()>_R
                           <Data.Functor.Identity.Identity>_R
                           <S4.Instruction>_R)) -}
-238aaf67f1fd10db8baf20e3018a0ced
+03588fa57f9e53e816b733dc9c1e87de
   forw1 ::
     Text.Parsec.Prim.State [GHC.Types.Char] ()
     -> (S4.Instruction
@@ -297,7 +238,7 @@ a91e5ede4010948ecbf7f037578cd9f7
 7e7c56d08a21bf74a583f680786655d0
   forw11 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "FORW"#) -}
-b15e2a9444cf4bfbc0cac67b51c34d4b
+dc45c8e244187c69fc60b48ef204e470
   forw2 ::
     Text.Parsec.Prim.State [GHC.Types.Char] ()
     -> (S4.Instruction
@@ -373,7 +314,7 @@ b15e2a9444cf4bfbc0cac67b51c34d4b
                       (\ err' :: Text.Parsec.Error.ParseError ->
                        eta4 (Text.Parsec.Error.mergeError err err')))
                    eta4) -}
-2d2af67e97ab792c8004e2065e80ded0
+c61c668b4fa4314ac36b8aecd75b0df5
   forw3 ::
     Text.Parsec.Prim.State [GHC.Types.Char] ()
     -> (S4.Instruction
@@ -451,7 +392,7 @@ b15e2a9444cf4bfbc0cac67b51c34d4b
                       (\ err' :: Text.Parsec.Error.ParseError ->
                        eta4 (Text.Parsec.Error.mergeError err err')))
                    eta4) -}
-dda04331a0d824893ce3d0899136e6ab
+881841a9c98985ae6e39f1ad6c92778a
   forw4 ::
     [GHC.Types.Char]
     -> forall b.
@@ -630,7 +571,7 @@ f3e82c65b1dba659891ed50afe99da7a
                    @ GHC.Base.String
                    Text.Parsec.Char.space2
                    (GHC.Types.[] @ GHC.Base.String)) -}
-415c92105e9907639ec3154c790c68f6
+bcefb11da866e9ebf26457becf4b2a5d
   parseTest ::
     GHC.Base.String
     -> Data.Either.Either Text.Parsec.Error.ParseError S4.Instruction
@@ -642,7 +583,7 @@ f3e82c65b1dba659891ed50afe99da7a
                  ->_R Data.Functor.Identity.NTCo:Identity[0]
                           <Data.Either.Either
                              Text.Parsec.Error.ParseError S4.Instruction>_R) -}
-226692dce4c41cb7983bb7c2dd897f02
+d0e5a1e89b23485a639b9b4b9b2303ab
   parseTest1 ::
     GHC.Base.String
     -> Data.Functor.Identity.Identity
@@ -667,7 +608,7 @@ f3e82c65b1dba659891ed50afe99da7a
                    GHC.Tuple.()
                    (GHC.Types.[] @ GHC.Types.Char)
                    s1) -}
-d6208e28e312e864c47d04e0f5638e07
+d4454703ef2ddc288c72f0f9f989a533
   regularParse ::
     Text.Parsec.String.Parser a
     -> GHC.Base.String
@@ -676,12 +617,12 @@ d6208e28e312e864c47d04e0f5638e07
      Unfolding: InlineRule (0, True, True)
                 S4.regularParse1
                   `cast`
-                (forall a7.
-                 <Text.Parsec.String.Parser a7>_R
+                (forall a26.
+                 <Text.Parsec.String.Parser a26>_R
                  ->_R <GHC.Base.String>_R
                  ->_R Data.Functor.Identity.NTCo:Identity[0]
-                          <Data.Either.Either Text.Parsec.Error.ParseError a7>_R) -}
-42c2214970eff6cef170c9f6b6d431ba
+                          <Data.Either.Either Text.Parsec.Error.ParseError a26>_R) -}
+6c38b8feb9588e31b47652cb27e81be3
   regularParse1 ::
     Text.Parsec.String.Parser a
     -> GHC.Base.String
@@ -689,19 +630,21 @@ d6208e28e312e864c47d04e0f5638e07
          (Data.Either.Either Text.Parsec.Error.ParseError a)
   {- Arity: 2, Strictness: <L,1*C1(C1(C1(C1(C1(U)))))><L,U>,
      Unfolding: InlineRule (2, True, False)
-                (\ @ a7 p :: Text.Parsec.String.Parser a7 s1 :: GHC.Base.String ->
+                (\ @ a26
+                   p :: Text.Parsec.String.Parser a26
+                   s1 :: GHC.Base.String ->
                  Text.Parsec.Prim.runPT
                    @ GHC.Base.String
                    @ ()
                    @ Data.Functor.Identity.Identity
-                   @ a7
+                   @ a26
                    @ GHC.Types.Char
                    (Text.Parsec.String.$s$fStream[]mtok @ GHC.Types.Char)
                    p
                    GHC.Tuple.()
                    (GHC.Types.[] @ GHC.Types.Char)
                    s1) -}
-83bdb929f6ef9afb3a38c809ba330543
+43185f4e620d7b0f6563a665f08138ab
   testInstruction :: Text.Parsec.String.Parser S4.Instruction
   {- Arity: 5,
      Strictness: <L,U(U,U(U,U,U),U)><L,C(C1(C1(U)))><L,U><L,C(C1(C1(U)))><L,C(U)>,
@@ -713,7 +656,7 @@ d6208e28e312e864c47d04e0f5638e07
                           <()>_R
                           <Data.Functor.Identity.Identity>_R
                           <S4.Instruction>_R)) -}
-1885db36541754ccc78c4994e5266d64
+376e310e1457b6cbcdfaae290fa20851
   testInstruction1 ::
     Text.Parsec.Prim.State [GHC.Types.Char] ()
     -> (S4.Instruction
