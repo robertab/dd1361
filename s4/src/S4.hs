@@ -29,67 +29,50 @@ regularParse :: Parser a  -> String -> Either ParseError a
 regularParse p = parse p ""
 
 testInstruction :: Parser Instruction
-testInstruction = try forw <|> back <|> left <|> right <|> up <|> down <|> color
+testInstruction =
+  try
+    forw <|> back <|> left <|> right <|> up <|> down <|> color
 
 parseTest :: String -> Either ParseError Instruction
 parseTest = regularParse forw 
 
 down :: Parser Instruction
 down = do
-  f <- string "DOWN"
-  spaces
-  char '.'
+  (string "DOWN") <* spaces <* (char '.')
   return Down
 
 up :: Parser Instruction
-up = do
-  f <- string "UP"
-  spaces
-  char '.'
+up = do 
+  (string "UP") <* spaces <* (char '.')
   return Up
-  
+
 color :: Parser Instruction
 color = do
-  f <- string "COLOR"
-  many1 space
-  char '#'
-  col <- many1 digit
-  spaces
-  char '.'
-  return (Color (read col))
+  instr <- string "COLOR" <* (many1 space) <* (char '#')
+  col <- (Color . read) <$> many1 digit <* spaces <* char '.'
+  return col
 
 left :: Parser Instruction
 left = do
-  f <- string "LEFT"
-  many1 space
-  n <- many1 digit
-  spaces
-  char '.'
-  return (LeftI (read n))
+  instr <- string "LEFT" <* many1 space
+  l <- (LeftI . read) <$> many1 digit <* spaces <* char '.'
+  return l
 
 right :: Parser Instruction
 right = do
-  f <- string "RIGHT"
-  many1 space
-  n <- many1 digit
-  spaces
-  char '.'
-  return (RightI (read n))
+  instr <- string "RIGHT" <* many1 space
+  r <- (RightI . read) <$> many1 digit <* spaces <* char '.'
+  return r
 
 forw :: Parser Instruction
 forw = do
-     f <- string "FORW"
-     many1 space
-     n <- many1 digit
-     spaces
-     char '.'
-     return (Forw (read n))
+  f <- string "FORW" <* many1 space
+  for <- (Forw . read) <$> many1 digit <* spaces <* char '.'
+  return for
 
 back :: Parser Instruction
 back = do
-       f <- string "BACK"
-       many1 space
-       n <- many1 digit
-       spaces
-       char '.'
-       return (Back (read n))
+  f <- string "BACK" <* many1 space
+  for <- (Back . read) <$> many1 digit <* spaces <* char '.'
+  return for
+

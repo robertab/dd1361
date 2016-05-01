@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-05-01 17:10:06.678493 UTC
+2016-05-01 17:47:52.3213 UTC
 
 interface main@main:Main 7103
-  interface hash: ff85ef55cacc2c4ada9a40dd1994f822
-  ABI hash: 29696b38598e1d102934d171473e1eed
+  interface hash: 9b74c55c37548efd11893fd514090943
+  ABI hash: 34192cd85b7719b6901ea98acd09107f
   export-list hash: 22768fb8db1d18a3cc5aadfc9a121dcc
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 404c004176801da00ef05793e263264e
@@ -50,13 +50,13 @@ import  -/  base-4.8.2.0:GHC.Unicode cdf84fc3abbaf34ba6b6645291cef991
 import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
 import  -/  base-4.8.2.0:System.IO 0248c1e850b7ea124cf7a2e1669ebf67
 import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
-import  -/  s4-0.1.0.0@s4_EFgflZrg4kFIOeFDBXukdQ:S4 d7c742ee61ef95b2004589ff2bf6445f
-31e8d55b0a8fe90ae4be487394a63aa5
+import  -/  s4-0.1.0.0@s4_EFgflZrg4kFIOeFDBXukdQ:S4 b56b26532c2e74ba060f231f8469c626
+7839aa991a6eb3d96edc18803d187d03
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <L,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
-f7d318131f8ef07f667e314e234fd77e
+44f91375b662f4d4d8fe97a8a0c3d077
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -109,7 +109,7 @@ f7d318131f8ef07f667e314e234fd77e
                               (GHC.Types.[] @ GHC.Types.Char)) })
                    GHC.Types.False
                    ipv }) -}
-c8043799062363329fe40d429b5efaa0
+2200d7d532398726a15467ab54ae9c11
   main2 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
