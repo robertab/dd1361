@@ -1,0 +1,9 @@
+module Spaces where
+
+
+main :: IO ()
+main = interact (show . handleInput)
+
+
+handleInput :: String -> [String]
+handleInput = lines

@@ -1,0 +1,4 @@
+if [ $(cat $test.out) == $(cat $test1.out) ]
+then echo "all test ok"
+else -e "wrong"
+fi
