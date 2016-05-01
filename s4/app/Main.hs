@@ -1,6 +1,9 @@
 module Main where
 
-import Lib
+
+import S4
+
+import Data.Char
 
 main :: IO ()
-main = someFunc
+main = interact (show . regularParse testInstruction . map toUpper)
