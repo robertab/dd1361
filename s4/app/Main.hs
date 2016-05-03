@@ -6,4 +6,4 @@ import S4
 import Data.Char
 
 main :: IO ()
-main = interact (show . regularParse testInstruction . map toUpper)
+main = interact (show . createTokens . map toUpper)

@@ -1,78 +1,122 @@
-module S4 
-          (regularParse
-          ,parseTest
-          ,forw
-          ,testInstruction
-          ,
-          ) where
+module S4 where
 
 
-import Text.Parsec (ParseError, parse, many1, digit, many, try, spaces, char)
+import Text.Parsec (ParseError, parse, many1, digit, many, try, sepBy, spaces, char, choice, eof, endBy, manyTill, count, chainl1, letter)
+import Text.Parsec.Prim ((<?>))
 import Text.Parsec.String (Parser)
-import Text.Parsec.Char (anyChar, string, oneOf, space )
+import Text.Parsec.Char (anyChar, string, oneOf, space, endOfLine, noneOf)
 import Data.Char
 import Control.Applicative ((<|>), (<$>), (<*), (*>), (<$))
 import Control.Monad (void)
+     
+type ColorCode = String
 
+data Expr = Num Integer
+                    | Var String
+                    | Add Expr Expr
+                    | Parens Expr
+                    | Mul Expr Expr
+                    | Div Expr Expr
+                      deriving (Eq,Show)
 
-data Instruction
-  = Forw Integer
-  | Back Integer
-  | LeftI Integer
-  | RightI Integer
-  | Color Integer
+data Token
+  = Forw 
+  | Back 
+  | LeftI 
+  | RightI 
+  | Color
+  | Rep
+  | Dot
+  | Hash ColorCode
+  | Numb Integer
+  | Quote
   | Down
   | Up
-  deriving ((Show))
+  deriving (Show, Eq)
 
-regularParse :: Parser a  -> String -> Either ParseError a
-regularParse p = parse p ""
+lexeme :: Parser a -> Parser a
+lexeme p = p <* whitespace
 
-testInstruction :: Parser Instruction
-testInstruction =
-  try
-    forw <|> back <|> left <|> right <|> up <|> down <|> color
+instr :: Parser Token
+instr = try color 
+        <|> choice [try rep, right] 
+        <|> dot 
+        <|> up
+        <|> down
+        <|> back 
+        <|> left 
+        <|> forw 
+        <|> quote
+        <|> number
+        <|> hash
 
-parseTest :: String -> Either ParseError Instruction
-parseTest = regularParse forw 
+createTokens :: String -> Either ParseError [Token]
+createTokens = parse (whitespace *> many instr <* eof) ""
 
-down :: Parser Instruction
-down = do
-  (string "DOWN") <* spaces <* (char '.')
-  return Down
+color :: Parser Token
+color = lexeme $ string "COLOR" *> space *> return Color
 
-up :: Parser Instruction
-up = do 
-  (string "UP") <* spaces <* (char '.')
-  return Up
+rep :: Parser Token
+rep = lexeme $ string "REP" *> space *> return Rep
 
-color :: Parser Instruction
-color = do
-  instr <- string "COLOR" <* (many1 space) <* (char '#')
-  col <- (Color . read) <$> many1 digit <* spaces <* char '.'
-  return col
+down :: Parser Token
+down = lexeme $ string "DOWN" *> return Down 
 
-left :: Parser Instruction
-left = do
-  instr <- string "LEFT" <* many1 space
-  l <- (LeftI . read) <$> many1 digit <* spaces <* char '.'
-  return l
+up :: Parser Token
+up = lexeme $ string "UP" *> return Up 
 
-right :: Parser Instruction
-right = do
-  instr <- string "RIGHT" <* many1 space
-  r <- (RightI . read) <$> many1 digit <* spaces <* char '.'
-  return r
+forw :: Parser Token
+forw = lexeme $ string "FORW" *> space *> return Forw
 
-forw :: Parser Instruction
-forw = do
-  f <- string "FORW" <* many1 space
-  for <- (Forw . read) <$> many1 digit <* spaces <* char '.'
-  return for
+back :: Parser Token
+back = lexeme $ string "BACK" *> space *> return Back
 
-back :: Parser Instruction
-back = do
-  f <- string "BACK" <* many1 space
-  for <- (Back . read) <$> many1 digit <* spaces <* char '.'
-  return for
+left :: Parser Token
+left = lexeme $ string "LEFT" *> space *> return LeftI
+
+right :: Parser Token
+right = lexeme $ string "RIGHT" *> space *> return RightI
+
+dot :: Parser Token
+dot =  lexeme $ char '.' *> return Dot 
+
+quote :: Parser Token
+quote = lexeme (char '\"') *> return Quote
+
+hash :: Parser Token
+hash = lexeme $ do 
+  char '#' 
+  col <- (count 6 anyChar)   
+  return (Hash col)
+
+number :: Parser Token
+number = (Numb . read) <$> lexeme (many1 digit) 
+
+num' :: Parser Expr
+num' = (Num . read) <$> lexeme (many1 digit)
+var' :: Parser Expr
+var' = Var <$> iden
+  where
+    iden = lexeme ((:) <$> firstChar <*> many nonFirstChar)
+    firstChar = letter <|> char '_'
+    nonFirstChar = digit <|> firstChar
+parens' :: Parser Expr
+parens' =
+    Parens <$> (lexeme (char '(')
+                *> simpleExpr'
+                <* lexeme (char ')'))
+term' :: Parser Expr
+term' = num' <|> var' <|> parens'
+simpleExpr' :: Parser Expr
+simpleExpr' = chainl1 term' op
+  where op = Add <$ lexeme (char '+')
+
+whitespace :: Parser ()
+whitespace = choice [comment *> whitespace,
+                     simpleWhitespace *> whitespace,
+                     return ()]
+
+simpleWhitespace = void $ many1 (oneOf " \t\n")
+comment = void (try (string "%") *>
+                              manyTill anyChar (void (char '\n') <|> eof))
 
