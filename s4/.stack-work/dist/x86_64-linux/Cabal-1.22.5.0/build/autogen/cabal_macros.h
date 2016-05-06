@@ -7,6 +7,13 @@
   (major1) == 4 && (major2) <  8 || \
   (major1) == 4 && (major2) == 8 && (minor) <= 2)
 
+/* package containers-0.5.6.2 */
+#define VERSION_containers "0.5.6.2"
+#define MIN_VERSION_containers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  5 || \
+  (major1) == 0 && (major2) == 5 && (minor) <= 6)
+
 /* package parsec-3.1.9 */
 #define VERSION_parsec "3.1.9"
 #define MIN_VERSION_parsec(major1,major2,minor) (\
@@ -84,5 +91,5 @@
   (major1) == 2 && (major2) <  26 || \
   (major1) == 2 && (major2) == 26 && (minor) <= 0)
 
-#define CURRENT_PACKAGE_KEY "s4_EFgflZrg4kFIOeFDBXukdQ"
+#define CURRENT_PACKAGE_KEY "s4_CNAlJoOMahpLIiI8ONUcw6"
 

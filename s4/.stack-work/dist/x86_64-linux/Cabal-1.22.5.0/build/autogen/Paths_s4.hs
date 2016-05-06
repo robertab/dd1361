@@ -17,7 +17,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/home/robert/KTH/dd1361/s4/.stack-work/install/x86_64-linux/lts-5.14/7.10.3/bin"
-libdir     = "/home/robert/KTH/dd1361/s4/.stack-work/install/x86_64-linux/lts-5.14/7.10.3/lib/x86_64-linux-ghc-7.10.3/s4-0.1.0.0-EFgflZrg4kFIOeFDBXukdQ"
+libdir     = "/home/robert/KTH/dd1361/s4/.stack-work/install/x86_64-linux/lts-5.14/7.10.3/lib/x86_64-linux-ghc-7.10.3/s4-0.1.0.0-CNAlJoOMahpLIiI8ONUcw6"
 datadir    = "/home/robert/KTH/dd1361/s4/.stack-work/install/x86_64-linux/lts-5.14/7.10.3/share/x86_64-linux-ghc-7.10.3/s4-0.1.0.0"
 libexecdir = "/home/robert/KTH/dd1361/s4/.stack-work/install/x86_64-linux/lts-5.14/7.10.3/libexec"
 sysconfdir = "/home/robert/KTH/dd1361/s4/.stack-work/install/x86_64-linux/lts-5.14/7.10.3/etc"

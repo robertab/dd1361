@@ -1,0 +1,189 @@
+
+==================== FINAL INTERFACE ====================
+2016-05-05 10:15:57.565201 UTC
+
+interface s4_CNAlJoOMahpLIiI8ONUcw6:Parse 7103
+  interface hash: f042f201e28212a5210a5c8e4b8bb396
+  ABI hash: c0eea6a6fde8cad2c976257f7c479ee0
+  export-list hash: f6bc59c97d4e71496f175f3822c35771
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 962af636f8e927040c7daa9c21457292
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Parse.parseTokens
+  Parse.Tree{Parse.Leaf Parse.Node}
+module dependencies: S4
+package dependencies: array-0.5.1.0@array_67iodizgJQIIxYVTp4emlA
+                      base-4.8.2.0* binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi
+                      bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6
+                      containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU
+                      deepseq-1.4.1.1@deeps_6vMKxt5sPFR0XsbRWvvq59 ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0 mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8
+                      parsec-3.1.9@parse_7aUabKPjr5W6Al5Ge35AQl
+                      text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne
+                      transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+         binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6:Data.ByteString.Builder
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Show
+         transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.Error
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
+                         base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
+                         base-4.8.2.0:Data.Void base-4.8.2.0:GHC.Exts
+                         base-4.8.2.0:GHC.Generics
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntMap.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntSet.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Sequence
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Set.Base
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+import  -/  base-4.8.2.0:Data.Either e8724afd65fd432cfe9a54014f5f762d
+import  -/  base-4.8.2.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.2.0:GHC.Show 0e1d8380a8fb0cfb07ebeda3b70cbf38
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+import  -/  integer-gmp-1.0.0.0:GHC.Integer.Type 371e90fe753f08ddedf0d2657a9ef5c4
+import  -/  S4 1bf554dde6986a2f40eee05f05672fa6
+  exports: 1e84f27c9de75ad474408c3e15340d0b
+  Back 8d7e8d138433a7f2f9cbda8dd5697ab4
+  Color 64abe5635c1bad0ff63a549bec25cd0d
+  Dot fb7d96ef013cc6c9dd426ca94fd4caaf
+  Down 444ee8f640bd0d7dbde6dd8822a319f5
+  Forw 04f5d7f4f86867891b2cfc7fb90196b3
+  Hash 3f7de5691a1591154d9bdd7b748f1d85
+  LeftI ec8f48f4304553db2525ad65194353da
+  Num 309df78fccae15f23bc645fb6772ec9b
+  Quote 6c171d9d889977de4e4ad0f724f6932c
+  Rep 92202d8321f24b34b48df3ed089489e7
+  RightI 9a83cf1f3b87748ab01e20b0ee15750a
+  Token 5d71e2ffce8875db26e7cf51b05ce353
+  Up 9aa7e1c4b98ff333b2ab596168275ebe
+d5857d8634f4ed877c8e2f0f755de5e6
+  $fEqTree ::
+    (GHC.Classes.Eq a, GHC.Classes.Eq b) =>
+    GHC.Classes.Eq (Parse.Tree a b)
+  DFunId[0]
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U(C(C1(U)),A)><L,U(C(C1(U)),A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a
+                      @ b
+                      $dEq :: GHC.Classes.Eq a
+                      $dEq1 :: GHC.Classes.Eq b.
+                  @ (Parse.Tree a b)
+                  (Parse.$fEqTree_$c== @ a @ b $dEq $dEq1)
+                  (Parse.$fEqTree_$c/= @ a @ b $dEq $dEq1) -}
+d5857d8634f4ed877c8e2f0f755de5e6
+  $fEqTree_$c/= ::
+    (GHC.Classes.Eq a, GHC.Classes.Eq b) =>
+    Parse.Tree a b -> Parse.Tree a b -> GHC.Types.Bool
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,U(C(C1(U)),A)><L,U(C(C1(U)),A)><S,1*U><S,1*U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ @ a
+                   @ b
+                   $dEq :: GHC.Classes.Eq a
+                   $dEq1 :: GHC.Classes.Eq b
+                   a1 :: Parse.Tree a b
+                   b1 :: Parse.Tree a b ->
+                 case Parse.$fEqTree_$c== @ a @ b $dEq $dEq1 a1 b1 of wild {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False }) -}
+d5857d8634f4ed877c8e2f0f755de5e6
+  $fEqTree_$c== ::
+    (GHC.Classes.Eq a, GHC.Classes.Eq b) =>
+    Parse.Tree a b -> Parse.Tree a b -> GHC.Types.Bool
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,U(C(C1(U)),A)><L,U(C(C1(U)),A)><S,1*U><S,1*U> -}
+d5857d8634f4ed877c8e2f0f755de5e6
+  $fShowTree ::
+    (GHC.Show.Show a, GHC.Show.Show b) =>
+    GHC.Show.Show (Parse.Tree a b)
+  DFunId[0]
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A,A)><L,U(C(C1(U)),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a
+                      @ b
+                      $dShow :: GHC.Show.Show a
+                      $dShow1 :: GHC.Show.Show b.
+                  @ (Parse.Tree a b)
+                  (Parse.$fShowTree_$cshowsPrec @ a @ b $dShow $dShow1)
+                  (Parse.$fShowTree_$cshow @ a @ b $dShow $dShow1)
+                  (Parse.$fShowTree_$cshowList @ a @ b $dShow $dShow1) -}
+ed6fcf838573da976d7aa0e865129e1f
+  $fShowTree1 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0) -}
+d5857d8634f4ed877c8e2f0f755de5e6
+  $fShowTree_$cshow ::
+    (GHC.Show.Show a, GHC.Show.Show b) =>
+    Parse.Tree a b -> GHC.Base.String
+  {- Arity: 3,
+     Strictness: <L,U(C(C1(U)),A,A)><L,U(C(C1(U)),A,A)><S,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ a
+                   @ b
+                   $dShow :: GHC.Show.Show a
+                   $dShow1 :: GHC.Show.Show b
+                   x :: Parse.Tree a b ->
+                 Parse.$fShowTree_$cshowsPrec
+                   @ a
+                   @ b
+                   $dShow
+                   $dShow1
+                   GHC.Show.shows18
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+d5857d8634f4ed877c8e2f0f755de5e6
+  $fShowTree_$cshowList ::
+    (GHC.Show.Show a, GHC.Show.Show b) =>
+    [Parse.Tree a b] -> GHC.Show.ShowS
+  {- Arity: 4,
+     Strictness: <L,U(C(C1(U)),A,A)><L,U(C(C1(U)),A,A)><S,1*U><L,U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ @ a
+                   @ b
+                   $dShow :: GHC.Show.Show a
+                   $dShow1 :: GHC.Show.Show b
+                   eta :: [Parse.Tree a b]
+                   eta1 :: GHC.Base.String ->
+                 GHC.Show.showList__
+                   @ (Parse.Tree a b)
+                   (Parse.$fShowTree_$cshowsPrec
+                      @ a
+                      @ b
+                      $dShow
+                      $dShow1
+                      Parse.$fShowTree1)
+                   eta
+                   eta1) -}
+d5857d8634f4ed877c8e2f0f755de5e6
+  $fShowTree_$cshowsPrec ::
+    (GHC.Show.Show a, GHC.Show.Show b) =>
+    GHC.Types.Int -> Parse.Tree a b -> GHC.Show.ShowS
+  {- Arity: 4,
+     Strictness: <L,U(C(C1(U)),A,A)><L,U(C(C1(U)),A,A)><L,1*U(U)><S,1*U> -}
+d5857d8634f4ed877c8e2f0f755de5e6
+  data Tree a b = Node a b (Parse.Tree a b) (Parse.Tree a b) | Leaf
+    Promotable
+f2f0e73d9603bf48ea6e588bf5c9a44a
+  parseTokens ::
+    Parse.Tree S4.Token GHC.Integer.Type.Integer
+    -> Data.Either.Either e [S4.Token]
+    -> Parse.Tree S4.Token GHC.Integer.Type.Integer
+  {- Arity: 2, Strictness: <S,U><S,U> -}
+instance GHC.Classes.Eq [Parse.Tree] = Parse.$fEqTree
+instance GHC.Show.Show [Parse.Tree] = Parse.$fShowTree
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

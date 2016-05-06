@@ -1,8 +1,0 @@
-module S4 where
-
-
-import Text.Parsec
-
-
-main :: IO ()
-main = putStrLn "Hello, world"

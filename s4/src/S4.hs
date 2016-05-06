@@ -1,8 +1,10 @@
 module S4 where
 
 
+
 import Text.Parsec (ParseError, parse, many1, digit, many, try, sepBy, spaces, char, choice, eof, endBy, manyTill, count, chainl1, letter)
 import Text.Parsec.Prim ((<?>))
+import qualified Text.Parsec.Expr as E
 import Text.Parsec.String (Parser)
 import Text.Parsec.Char (anyChar, string, oneOf, space, endOfLine, noneOf)
 import Data.Char
@@ -10,14 +12,6 @@ import Control.Applicative ((<|>), (<$>), (<*), (*>), (<$))
 import Control.Monad (void)
      
 type ColorCode = String
-
-data Expr = Num Integer
-                    | Var String
-                    | Add Expr Expr
-                    | Parens Expr
-                    | Mul Expr Expr
-                    | Div Expr Expr
-                      deriving (Eq,Show)
 
 data Token
   = Forw 
@@ -28,14 +22,17 @@ data Token
   | Rep
   | Dot
   | Hash ColorCode
-  | Numb Integer
   | Quote
   | Down
   | Up
+  | Num Integer
+  | Var String
+  | Add Token Token
+  | Min Token Token
+  | Parens Token
+  | Mul Token Token
+  | Div Token Token
   deriving (Show, Eq)
-
-lexeme :: Parser a -> Parser a
-lexeme p = p <* whitespace
 
 instr :: Parser Token
 instr = try color 
@@ -47,11 +44,16 @@ instr = try color
         <|> left 
         <|> forw 
         <|> quote
-        <|> number
         <|> hash
+        <|> expr
+        <|> parens
+
 
 createTokens :: String -> Either ParseError [Token]
 createTokens = parse (whitespace *> many instr <* eof) ""
+
+lexeme :: Parser a -> Parser a
+lexeme p = p <* whitespace
 
 color :: Parser Token
 color = lexeme $ string "COLOR" *> space *> return Color
@@ -86,30 +88,34 @@ quote = lexeme (char '\"') *> return Quote
 hash :: Parser Token
 hash = lexeme $ do 
   char '#' 
-  col <- (count 6 anyChar)   
+  col <- count 6 anyChar  
   return (Hash col)
 
-number :: Parser Token
-number = (Numb . read) <$> lexeme (many1 digit) 
+num :: Parser Token
+num = (Num . read) <$> lexeme (many1 digit)
 
-num' :: Parser Expr
-num' = (Num . read) <$> lexeme (many1 digit)
-var' :: Parser Expr
-var' = Var <$> iden
+var :: Parser Token
+var = Var <$> iden
   where
     iden = lexeme ((:) <$> firstChar <*> many nonFirstChar)
-    firstChar = letter <|> char '_'
+    firstChar = letter <|> char '_' <|> char '='
     nonFirstChar = digit <|> firstChar
-parens' :: Parser Expr
-parens' =
+
+parens :: Parser Token
+parens =
     Parens <$> (lexeme (char '(')
-                *> simpleExpr'
+                *> expr
                 <* lexeme (char ')'))
-term' :: Parser Expr
-term' = num' <|> var' <|> parens'
-simpleExpr' :: Parser Expr
-simpleExpr' = chainl1 term' op
-  where op = Add <$ lexeme (char '+')
+
+term :: Parser Token
+term = num <|> var <|> parens
+
+expr :: Parser Token
+expr = chainl1 term op
+  where op = (Add <$ lexeme (char '+')) 
+             <|> (Mul <$ lexeme (char '*')) 
+             <|> (Div <$ lexeme (char '/')) 
+             <|> (Min <$ lexeme (char '-'))
 
 whitespace :: Parser ()
 whitespace = choice [comment *> whitespace,
@@ -119,4 +125,3 @@ whitespace = choice [comment *> whitespace,
 simpleWhitespace = void $ many1 (oneOf " \t\n")
 comment = void (try (string "%") *>
                               manyTill anyChar (void (char '\n') <|> eof))
-

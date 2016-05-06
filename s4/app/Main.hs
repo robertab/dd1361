@@ -1,9 +1,13 @@
 module Main where
 
 
-import S4
 
-import Data.Char
+--import Data.Char
+
+--import Lexer
+--import S4
+--import Parse
+import LexerTest
 
 main :: IO ()
-main = interact (show . createTokens . map toUpper)
+main = interact (show . createTokens)
