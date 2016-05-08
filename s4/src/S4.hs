@@ -73,7 +73,7 @@ forw = lexeme $ string "FORW" *> space *> return Forw
 back :: Parser Token
 back = lexeme $ string "BACK" *> space *> return Back
 
-left :: Parser Token
+Pleft :: Parser Token
 left = lexeme $ string "LEFT" *> space *> return LeftI
 
 right :: Parser Token

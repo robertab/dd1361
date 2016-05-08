@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-05-06 05:56:48.457165 UTC
+2016-05-08 14:41:37.794419 UTC
 
 interface main@main:Main 7103
-  interface hash: 96c7ded1725b86d41af05744e98cca5e
-  ABI hash: c14a5839f7c1275e2d50f914d614375e
-  export-list hash: fca29902cafaad01dca356a693c09b7e
+  interface hash: f3141b0ccbeda859122952dfa2dd264f
+  ABI hash: 4562e453ec77722d8230554e1f7f0efb
+  export-list hash: 2e681855285850e5d776d20442e8038f
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 404c004176801da00ef05793e263264e
   sig of: Nothing
@@ -21,7 +21,7 @@ package dependencies: array-0.5.1.0@array_67iodizgJQIIxYVTp4emlA
                       deepseq-1.4.1.1@deeps_6vMKxt5sPFR0XsbRWvvq59 ghc-prim-0.4.0.0
                       integer-gmp-1.0.0.0 mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8
                       parsec-3.1.9@parse_7aUabKPjr5W6Al5Ge35AQl
-                      s4-0.1.0.0@s4_CNAlJoOMahpLIiI8ONUcw6
+                      s4-0.1.0.0@s4_5a036ccoHUe9tzKFXgbNQT
                       text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne
                       transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF
 orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
@@ -43,69 +43,78 @@ family instance modules: base-4.8.2.0:Control.Applicative
                          containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Set.Base
                          text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
                          text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
-import  -/  base-4.8.2.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
-import  -/  base-4.8.2.0:GHC.Show 0e1d8380a8fb0cfb07ebeda3b70cbf38
 import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
 import  -/  base-4.8.2.0:System.IO 0248c1e850b7ea124cf7a2e1669ebf67
 import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
-import  -/  s4-0.1.0.0@s4_CNAlJoOMahpLIiI8ONUcw6:LexerTest 5ffff9616f41e2459f33b268f762fe3b
-e1ef7b61516d483d9931afb806c69c06
+import  -/  s4-0.1.0.0@s4_5a036ccoHUe9tzKFXgbNQT:LexerTest 50444ad8308312f4fc9834f689e8db71
+import  -/  s4-0.1.0.0@s4_5a036ccoHUe9tzKFXgbNQT:Parse bf434d6a4b425ab6aefff3d83fe5639a
+7723c007a2a2134e12493694bb4ef696
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <L,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
-987c82a94ba3069e456fbf87eb7f96b3
+8a594b2ef096247c4d4da3064914c04f
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1, Strictness: <L,U>,
-     Unfolding: (\ eta :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+     Unfolding: (\ s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
                  case GHC.IO.Handle.Text.hGetContents1
                         GHC.IO.Handle.FD.stdin
-                        eta of ds1 { (#,#) ipv ipv1 ->
-                 GHC.IO.Handle.Text.hPutStr2
-                   GHC.IO.Handle.FD.stdout
-                   (case (Text.Parsec.Prim.runPT
-                            @ GHC.Base.String
-                            @ ()
-                            @ Data.Functor.Identity.Identity
-                            @ [LexerTest.Instr]
-                            @ GHC.Types.Char
-                            (Text.Parsec.Language.$s$fStream[]mtok @ GHC.Types.Char)
-                            LexerTest.createTokens3
-                              `cast`
-                            (Sym (Text.Parsec.Prim.NTCo:ParsecT[0]
-                                      <[GHC.Types.Char]>_R
-                                      <()>_R
-                                      <Data.Functor.Identity.Identity>_R
-                                      <[LexerTest.Instr]>_R))
-                            GHC.Tuple.()
-                            LexerTest.createTokens2
-                            ipv1)
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        Main.main3
+                        GHC.Types.True
+                        ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 case (Text.Parsec.Prim.runPT
+                         @ GHC.Base.String
+                         @ ()
+                         @ Data.Functor.Identity.Identity
+                         @ [LexerTest.Instr]
+                         @ GHC.Types.Char
+                         (Text.Parsec.String.$s$fStream[]mtok @ GHC.Types.Char)
+                         LexerTest.createTokens3
                            `cast`
-                         (Data.Functor.Identity.NTCo:Identity[0]
-                              <Data.Either.Either
-                                 Text.Parsec.Error.ParseError [LexerTest.Instr]>_R) of wild {
-                      Data.Either.Left b1
-                      -> GHC.Base.++
-                           @ GHC.Types.Char
-                           Data.Either.$fShowEither3
-                           (case b1 of ww { Text.Parsec.Error.ParseError ww1 ww2 ->
-                            case ww1 of ww3 { Text.Parsec.Pos.SourcePos ww4 ww5 ww6 ->
-                            Text.Parsec.Error.$w$cshow ww4 ww5 ww6 ww2 } })
-                      Data.Either.Right b1
-                      -> GHC.Base.++
-                           @ GHC.Types.Char
-                           Data.Either.$fShowEither2
-                           (GHC.Show.showList__
-                              @ LexerTest.Instr
-                              LexerTest.$fShowInstr1
-                              b1
-                              (GHC.Types.[] @ GHC.Types.Char)) })
-                   GHC.Types.False
-                   ipv }) -}
-4db382ecbbf60e0ad6ffec054ee14609
-  main2 ::
+                         (Sym (Text.Parsec.Prim.NTCo:ParsecT[0]
+                                   <[GHC.Types.Char]>_R
+                                   <()>_R
+                                   <Data.Functor.Identity.Identity>_R
+                                   <[LexerTest.Instr]>_R))
+                         GHC.Tuple.()
+                         LexerTest.createTokens2
+                         ipv1)
+                        `cast`
+                      (Data.Functor.Identity.NTCo:Identity[0]
+                           <Data.Either.Either
+                              Text.Parsec.Error.ParseError [LexerTest.Instr]>_R) of wild {
+                   Data.Either.Left ipv4
+                   -> case Parse.runLeonardo10
+                      ret_ty (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                      of {}
+                   Data.Either.Right instr
+                   -> case Parse.runLeonardo9
+                             instr
+                             Parse.runLeonardo2
+                             ipv2 of ds3 { (#,#) ipv4 ipv5 ->
+                      GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        Main.main2
+                        GHC.Types.True
+                        ipv4 } } } }) -}
+f4f4ee972b08554c8ee4bd41e9724db9
+  main2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "</svg>\n\
+                   \\n"#) -}
+bf7148fba2ed6f6a42970ed67a39b989
+  main3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "<?xml version=\"1.0\"?>\n\
+                   \<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n\
+                   \<svg version=\"1.1\" x=\"0px\" y=\"0px\" width=\"612px\" height=\"792px\" viewBox = \"0 0 612 792\">\n"#) -}
+6c01c44ddc3a1e0de9504d0242174074
+  main4 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,

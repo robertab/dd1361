@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+ghc -O2 -ferror-spans -threaded -rtsopts Parser.hs Evaluator.hs Main.hs
+
+
+
+
+
+if [ -z $1 ]; then
+	echo 'Missing input file.' 
+	exit 1
+fi
+
+
+cat $1 | ./Main > $2
+rsvg-convert -f pdf -o img/pic.pdf $2

@@ -15,10 +15,11 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     S4, Parse, Lexer, LexerTest
+  exposed-modules:     Parse, LexerTest
   build-depends:       base >= 4.7 && < 5
                      , parsec
                      , containers
+                     , mtl
   default-language:    Haskell2010
 
 executable s4-exe
@@ -29,16 +30,10 @@ executable s4-exe
                      , s4
                      , parsec
                      , containers
+                     , mtl
+
   default-language:    Haskell2010
 
-test-suite s4-test
-  type:                exitcode-stdio-1.0
-  hs-source-dirs:      test
-  main-is:             Spec.hs
-  build-depends:       base
-                     , s4
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  default-language:    Haskell2010
 
 source-repository head
   type:     git
